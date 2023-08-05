@@ -1,0 +1,19 @@
+#!/usr/bin/env php
+<?php
+
+require 'vendor/autoload.php';
+require_once 'commands/HelloWorld.php';
+
+use Illuminate\Container\Container;
+use Illuminate\Events\Dispatcher;
+use Illuminate\Console\Application;
+
+$container = new Container;
+$events = new Dispatcher($container);
+
+$artisan = new Application($container, $events, 'Version 1');
+$artisan->setName('My Console App Name');
+
+$artisan->add(new HelloWorld());
+
+$artisan->run();
