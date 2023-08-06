@@ -31,6 +31,10 @@ class ComposerStaticInit7298d334784aa372d3330c2cda26f09e
         array (
             'voku\\' => 5,
         ),
+        'V' => 
+        array (
+            'View\\' => 5,
+        ),
         'S' => 
         array (
             'Symfony\\Polyfill\\Php80\\' => 23,
@@ -104,6 +108,10 @@ class ComposerStaticInit7298d334784aa372d3330c2cda26f09e
         'voku\\' => 
         array (
             0 => __DIR__ . '/..' . '/voku/portable-ascii/src/voku',
+        ),
+        'View\\' => 
+        array (
+            0 => __DIR__ . '/../..' . '/Views',
         ),
         'Symfony\\Polyfill\\Php80\\' => 
         array (
@@ -290,7 +298,7 @@ class ComposerStaticInit7298d334784aa372d3330c2cda26f09e
         ),
         'App\\' => 
         array (
-            0 => __DIR__ . '/../..' . '/src',
+            0 => __DIR__ . '/../..' . '/app',
         ),
     );
 
