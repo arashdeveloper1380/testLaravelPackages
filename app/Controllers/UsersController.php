@@ -17,7 +17,7 @@ class UsersController
 
     public function index()
     {
-        dd(User::all());
+        dd(User::find(1));
         $name = "arash";
         return view('index',compact('name'));
     }

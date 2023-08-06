@@ -94,6 +94,10 @@ class ComposerStaticInit7298d334784aa372d3330c2cda26f09e
             'Illuminate\\Console\\' => 19,
             'Illuminate\\Bus\\' => 15,
         ),
+        'H' => 
+        array (
+            'Helper\\' => 7,
+        ),
         'G' => 
         array (
             'GuzzleHttp\\Psr7\\' => 16,
@@ -301,6 +305,10 @@ class ComposerStaticInit7298d334784aa372d3330c2cda26f09e
         'Illuminate\\Bus\\' => 
         array (
             0 => __DIR__ . '/..' . '/illuminate/bus',
+        ),
+        'Helper\\' => 
+        array (
+            0 => __DIR__ . '/../..' . '/Helper',
         ),
         'GuzzleHttp\\Psr7\\' => 
         array (

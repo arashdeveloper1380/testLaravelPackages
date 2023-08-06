@@ -1,4 +1,5 @@
 <?php
+
 use View\View;
 
 if(!function_exists('dd')){
