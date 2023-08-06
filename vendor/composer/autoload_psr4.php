@@ -7,11 +7,7 @@ $baseDir = dirname($vendorDir);
 
 return array(
     'voku\\' => array($vendorDir . '/voku/portable-ascii/src/voku'),
-<<<<<<< HEAD
     'View\\' => array($baseDir . '/Core/Views'),
-=======
-    'View\\' => array($baseDir . '/Views'),
->>>>>>> 39ac8c1966316976d40155a803388a5c1246cd2c
     'Symfony\\Polyfill\\Php80\\' => array($vendorDir . '/symfony/polyfill-php80'),
     'Symfony\\Polyfill\\Php73\\' => array($vendorDir . '/symfony/polyfill-php73'),
     'Symfony\\Polyfill\\Php72\\' => array($vendorDir . '/symfony/polyfill-php72'),
