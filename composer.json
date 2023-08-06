@@ -9,7 +9,11 @@
     "autoload": {
         "psr-4": {
             "App\\": "app/",
+<<<<<<< HEAD
             "View\\": "Core/Views"
+=======
+            "View\\": "Views/"
+>>>>>>> 39ac8c1966316976d40155a803388a5c1246cd2c
         }
     },
     "require-dev": {
