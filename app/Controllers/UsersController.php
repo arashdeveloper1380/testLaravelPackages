@@ -14,7 +14,8 @@ class UsersController
     }
     public function index()
     {
-        return View::loadView('index');
+        $name = "arash";
+        View::renderBlade('index',compact('name'));
     }
 
     public function store()
