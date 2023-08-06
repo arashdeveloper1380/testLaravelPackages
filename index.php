@@ -2,6 +2,8 @@
 
 require 'vendor/autoload.php';
 
+require_once 'Config/database.php';
+
 use App\Controllers\UsersController;
 use Illuminate\Container\Container;
 use Illuminate\Events\Dispatcher;
