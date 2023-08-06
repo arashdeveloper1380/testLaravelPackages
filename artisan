@@ -2,7 +2,7 @@
 <?php
 
 require 'vendor/autoload.php';
-require_once 'commands/HelloWorld.php';
+require_once 'commands/Serve.php';
 
 use Illuminate\Container\Container;
 use Illuminate\Events\Dispatcher;
@@ -14,6 +14,6 @@ $events = new Dispatcher($container);
 $artisan = new Application($container, $events, 'Version 1');
 $artisan->setName('My Console App Name');
 
-$artisan->add(new HelloWorld());
+$artisan->add(new Serve());
 
 $artisan->run();
