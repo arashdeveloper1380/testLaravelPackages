@@ -61,6 +61,10 @@ class ComposerStaticInit7298d334784aa372d3330c2cda26f09e
             'Symfony\\Component\\ErrorHandler\\' => 31,
             'Symfony\\Component\\Console\\' => 26,
         ),
+        'R' => 
+        array (
+            'Rakit\\Validation\\' => 17,
+        ),
         'P' => 
         array (
             'Psr\\SimpleCache\\' => 16,
@@ -205,6 +209,10 @@ class ComposerStaticInit7298d334784aa372d3330c2cda26f09e
         'Symfony\\Component\\Console\\' => 
         array (
             0 => __DIR__ . '/..' . '/symfony/console',
+        ),
+        'Rakit\\Validation\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/rakit/validation/src',
         ),
         'Psr\\SimpleCache\\' => 
         array (

@@ -2,8 +2,9 @@
 
 namespace App\Controllers;
 require_once 'Helper/helpers.php';
-use View\View;
+
 use Illuminate\Http\Request;
+use Rakit\Validation\Validator;
 
 class UsersController
 {
@@ -16,12 +17,23 @@ class UsersController
     public function index()
     {
         $name = "arash";
-        // View::renderBlade('index',compact('name'));
         return view('index',compact('name'));
     }
 
     public function store()
     {
+        $validator = new Validator;
+
+        $validation = $validator->make($_POST + $_FILES, [
+            'name' => 'required',
+        ]);
+
+        $validation->validate();
+
+        if ($validation->fails()) {
+            dd($validation->errors());
+        }
+        
         $name = $this->request->get('name');
         var_dump($name);
     }
