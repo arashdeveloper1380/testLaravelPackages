@@ -14,7 +14,8 @@
             "App\\": "App/",
             "View\\": "Core/Views",
             "Models\\": "App/Models",
-            "Helper\\": "Helper/"
+            "Helper\\": "Helper/",
+            "Auth\\": "Core/Auth"
         }
     },
     "require-dev": {

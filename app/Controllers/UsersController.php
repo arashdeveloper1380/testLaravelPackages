@@ -6,6 +6,7 @@ require_once 'Helper/helpers.php';
 use App\Models\User;
 use Illuminate\Http\Request;
 use Rakit\Validation\Validator;
+use Auth\Auth;
 
 class UsersController
 {
@@ -17,26 +18,31 @@ class UsersController
 
     public function index()
     {
-        dd(User::find(1));
-        $name = "arash";
+        $name = "welcome ";
         return view('index',compact('name'));
     }
 
     public function store()
     {
-        $validator = new Validator;
-
-        $validation = $validator->make($_POST + $_FILES, [
-            'name' => 'required|numeric',
-        ]);
-
-        $validation->validate();
-
-        if ($validation->fails()) {
-            dd($validation->errors());
+        $login = Auth::login($this->request->get('email'), md5($this->request->get('password')));
+        if($login){
+            return Auth::user();
         }
+        dd("not match");
 
-        $name = $this->request->get('name');
-        var_dump($name);
+        // $validator = new Validator;
+
+        // $validation = $validator->make($_POST + $_FILES, [
+        //     'name' => 'required',
+        // ]);
+
+        // $validation->validate();
+
+        // if ($validation->fails()) {
+        //     dd($validation->errors());
+        // }
+
+        // $name = $this->request->get('name');
+        // var_dump($name);
     }
 }

@@ -15,7 +15,7 @@ $dispatcher = new Dispatcher($container);
 $router = new Router($dispatcher, $container);
 
 $router->get('/', [UsersController::class,'index']);
-$router->post('/store', [UsersController::class,'store']);
+$router->post('/store', [UsersController::class,'store'])->name('store');
 
 $response = $router->dispatch($request);
 $response->send();

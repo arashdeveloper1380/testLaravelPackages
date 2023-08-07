@@ -114,6 +114,7 @@ class ComposerStaticInit7298d334784aa372d3330c2cda26f09e
         ),
         'A' => 
         array (
+            'Auth\\' => 5,
             'App\\' => 4,
         ),
     );
@@ -329,6 +330,10 @@ class ComposerStaticInit7298d334784aa372d3330c2cda26f09e
         'Carbon\\' => 
         array (
             0 => __DIR__ . '/..' . '/nesbot/carbon/src/Carbon',
+        ),
+        'Auth\\' => 
+        array (
+            0 => __DIR__ . '/../..' . '/Core/Auth',
         ),
         'App\\' => 
         array (
