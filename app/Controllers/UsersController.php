@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Controllers;
-require_once 'Helper/helpers.php';
+require_once 'helpers.php';
 
 use App\Models\User;
 use Illuminate\Http\Request;
