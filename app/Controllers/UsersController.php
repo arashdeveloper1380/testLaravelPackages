@@ -24,25 +24,23 @@ class UsersController
 
     public function store()
     {
+        $validator = new Validator;
+
+        $validation = $validator->make($_POST + $_FILES, [
+            'email'     => 'required|email',
+            'password'  => 'required',
+        ]);
+
+        $validation->validate();
+
+        if ($validation->fails()) {
+            dd($validation->errors());
+        }
+
         $login = Auth::login($this->request->get('email'), md5($this->request->get('password')));
         if($login){
             return Auth::user();
         }
         dd("not match");
-
-        // $validator = new Validator;
-
-        // $validation = $validator->make($_POST + $_FILES, [
-        //     'name' => 'required',
-        // ]);
-
-        // $validation->validate();
-
-        // if ($validation->fails()) {
-        //     dd($validation->errors());
-        // }
-
-        // $name = $this->request->get('name');
-        // var_dump($name);
     }
 }
