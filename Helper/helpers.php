@@ -9,7 +9,7 @@ if(!function_exists('dd')){
     }
 }
 
-if(!function_exists('dd')){
+if(!function_exists('view')){
     function view($view, $param = []){
         return View::renderBlade($view,$param);
     }
