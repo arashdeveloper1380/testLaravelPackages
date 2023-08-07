@@ -22,7 +22,35 @@ class UsersController
         return view('index',compact('name'));
     }
 
-    public function store()
+    public function register(){
+        return view('register');
+    }
+
+    public function registerStore(){
+
+        $registerValidator = new Validator;
+
+        $validation = $registerValidator->make($_POST + $_FILES, [
+            'name'      => 'required',
+            'email'     => 'required|email|unique',
+            'password'  => 'required',
+        ]);
+
+        $validation->validate();
+
+        if($validation->fails()){
+            dd($validation->errors());
+        }
+
+        Auth::register(
+            $this->request->get('name'),
+            $this->request->get('email'),
+            $this->request->get('password'),
+        );
+    }
+
+
+    public function login()
     {
         $validator = new Validator;
 
