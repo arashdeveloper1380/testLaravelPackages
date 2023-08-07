@@ -1,3 +1,6 @@
+@php
+
+@endphp
 {{ $name }}
 <form action="/login" method="post">
     <input type="text" name="email" placeholder="Enter Email ..."><br><br>

@@ -111,6 +111,7 @@ class ComposerStaticInit7298d334784aa372d3330c2cda26f09e
         ),
         'C' => 
         array (
+            'Core\\' => 5,
             'Carbon\\' => 7,
         ),
         'A' => 
@@ -331,6 +332,10 @@ class ComposerStaticInit7298d334784aa372d3330c2cda26f09e
         'Doctrine\\Inflector\\' => 
         array (
             0 => __DIR__ . '/..' . '/doctrine/inflector/lib/Doctrine/Inflector',
+        ),
+        'Core\\' => 
+        array (
+            0 => __DIR__ . '/../..' . '/Core',
         ),
         'Carbon\\' => 
         array (

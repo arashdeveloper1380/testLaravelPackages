@@ -7,7 +7,8 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Rakit\Validation\Validator;
 use Auth\Auth;
-use Mailer\Mailer;
+use Core\Redirect\Redirect;
+use Illuminate\Support\Facades\Redirect as FacadesRedirect;
 
 class UsersController
 {
@@ -68,7 +69,7 @@ class UsersController
 
         $login = Auth::login($this->request->get('email'), md5($this->request->get('password')));
         if($login){
-            return Auth::user();
+            Redirect::back();
         }
         dd("not match");
     }
