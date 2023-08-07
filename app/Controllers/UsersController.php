@@ -7,6 +7,7 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Rakit\Validation\Validator;
 use Auth\Auth;
+use Mailer\Mailer;
 
 class UsersController
 {
@@ -70,5 +71,14 @@ class UsersController
             return Auth::user();
         }
         dd("not match");
+    }
+
+    public function resset(){
+        return view('resset');
+    }
+
+    public function ressetStore(){
+        $email = $this->request->get('email');
+        Auth::forgetPassword($email);
     }
 }

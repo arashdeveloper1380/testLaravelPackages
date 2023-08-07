@@ -2,13 +2,15 @@
 
 namespace Auth;
 
+require_once 'vendor/autoload.php';
+
 use App\Models\User;
 use Rakit\Validation\Validator;
+use Mailer\Mailer;
 
 Class Auth {
 
     public static function register($name, $email, $password){
-
         $user = User::create([
             'name'      => $name,
             'email'     => $email,
@@ -50,6 +52,10 @@ Class Auth {
         }
         $newPassword = self::generateRandomPassword();
         $user->update(['password' => $newPassword]);
+
+        $message = "new password is : {$newPassword}";
+
+        self::sendPasswordResetEmail($user->email, $user->name, 'new password', $message);
     }
 
     private static function generateRandomPassword($length = 8) {
@@ -61,8 +67,16 @@ Class Auth {
         return $password;
     }
 
-    private static function sendPasswordResetEmail($email, $newPassword) {
-        //
+    private static function sendPasswordResetEmail($email, $name, $subject = '', $message= '') {
+
+        $mailer = new Mailer();
+
+        $mailer->make()
+        ->setTo($email, $name)
+        ->setFrom('zxcv.arash1380@gmail.com', 'arash narimani')
+        ->setSubject($subject)
+        ->setMessage($message)
+        ->send();
     }
 
 }

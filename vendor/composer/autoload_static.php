@@ -77,6 +77,7 @@ class ComposerStaticInit7298d334784aa372d3330c2cda26f09e
         'M' => 
         array (
             'Models\\' => 7,
+            'Mailer\\' => 7,
         ),
         'I' => 
         array (
@@ -252,6 +253,10 @@ class ComposerStaticInit7298d334784aa372d3330c2cda26f09e
         'Models\\' => 
         array (
             0 => __DIR__ . '/../..' . '/App/Models',
+        ),
+        'Mailer\\' => 
+        array (
+            0 => __DIR__ . '/../..' . '/Core/Mailer',
         ),
         'Illuminate\\View\\' => 
         array (

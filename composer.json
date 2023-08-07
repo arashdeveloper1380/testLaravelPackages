@@ -15,7 +15,8 @@
             "View\\": "Core/Views",
             "Models\\": "App/Models",
             "Helper\\": "Helper/",
-            "Auth\\": "Core/Auth"
+            "Auth\\": "Core/Auth",
+            "Mailer\\": "Core/Mailer"
         }
     },
     "require-dev": {
