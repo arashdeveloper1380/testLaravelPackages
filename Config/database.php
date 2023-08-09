@@ -1,15 +1,15 @@
 <?php
 
+require_once 'env';
 use Illuminate\Database\Capsule\Manager as Capsule;
-
 $capsule = new Capsule;
 
 $capsule->addConnection([
     'driver' => 'mysql',
-    'host' => 'localhost',
-    'database' => 'mini',
-    'username' => 'root',
-    'password' => '',
+    'host' => $config['DB_HOST'],
+    'database' => $config['DB_DATABASE'],
+    'username' => $config['DB_USERNAME'],
+    'password' => $config['DB_PASSWORD'],
     'charset' => 'utf8',
     'collation' => 'utf8_unicode_ci',
     'prefix' => '',
