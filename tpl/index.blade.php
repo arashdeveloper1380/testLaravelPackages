@@ -7,12 +7,8 @@
     <link rel="stylesheet" href="{{ assets('css/style.css') }}">
 </head>
 <body>
-    {{ getUsers([], 'id asc', '1') }} <br><br>
-    <!-- <ul>
-        @foreach (getUsers() as $value)
-            <li>{{ $value->name }}</li>
-        @endforeach 
-    </ul> -->
+    {{ getData('users') }} <br><br>
+    {{ findData('users', 1)['name'] }} <br><br>
     
     {{ $name }}
     <form action="/login" method="post">

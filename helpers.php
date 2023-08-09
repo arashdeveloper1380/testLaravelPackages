@@ -36,10 +36,10 @@ if(!function_exists('tpl')){
     }
 }
 
-if(!function_exists('getUsers')){
-    function getUsers($where = null, $orderBy = null, $limit = null){
+if(!function_exists('getData')){
+    function getData($table = null, $where = null, $orderBy = null, $limit = null){
 
-        $query = DB::table('users');
+        $query = DB::table($table);
 
         if ($where) {
             $query->where($where);
@@ -55,5 +55,13 @@ if(!function_exists('getUsers')){
 
         return $query->get();
 
+    }
+}
+
+if(!function_exists('findData')){
+    function findData($table, $id){
+        $find = DB::table($table)->find($id);
+        $find = json_decode(json_encode($find), true);
+        return $find;
     }
 }

@@ -7,12 +7,8 @@
     <link rel="stylesheet" href="<?php echo e(assets('css/style.css')); ?>">
 </head>
 <body>
-    <?php echo e(getUsers([], 'id asc', '1')); ?> <br><br>
-    <!-- <ul>
-        <?php $__currentLoopData = getUsers(); $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $value): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-            <li><?php echo e($value->name); ?></li>
-        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?> 
-    </ul> -->
+    <?php echo e(getData('users')); ?> <br><br>
+    <?php echo e(findData('users', 1)['name']); ?> <br><br>
     
     <?php echo e($name); ?>
 
