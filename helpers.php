@@ -50,11 +50,11 @@ if(!function_exists('auth')){
     }
 }
 
-if(!function_exists('getAuthUser')){
-    function getAuthUser($id){
-        return Auth::user($id);
-    }
-}
+// if(!function_exists('getAuthUser')){
+//     function getAuthUser($id){
+//         return Auth::user($id);
+//     }
+// }
 
 if(!function_exists('getData')){
     function getData($table = null, $where = null, $orderBy = null, $limit = null){
