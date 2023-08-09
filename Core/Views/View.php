@@ -37,7 +37,7 @@ class View{
             $viewPaths = ['tpl'];
             $fileSystem = new Filesystem;
             $viewFinder = new FileViewFinder($fileSystem, $viewPaths);
-            $bladeCompiler = new BladeCompiler($fileSystem, '/tpl');
+            $bladeCompiler = new BladeCompiler($fileSystem, projectPath() . 'tpl/cache');
             $resolver = new EngineResolver;
             $resolver->register('blade', function () use ($bladeCompiler) {
                 return new CompilerEngine($bladeCompiler);
