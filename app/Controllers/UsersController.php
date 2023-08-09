@@ -9,6 +9,7 @@ use Rakit\Validation\Validator;
 use Auth\Auth;
 use Core\Redirect\Redirect;
 use Illuminate\Support\Facades\Redirect as FacadesRedirect;
+use Core\Response\Response;
 
 class UsersController
 {
@@ -20,6 +21,14 @@ class UsersController
 
     public function index()
     {
+        // return Response::json([
+        //     'users'     => getData('users'),
+        //     'status'    => 200,
+        // ], 200);
+
+        // return Response::success(getData('users'));
+        // return Response::error(getData('users'));
+
         $name = "welcome ";
         return view('index',compact('name'));
     }

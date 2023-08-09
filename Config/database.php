@@ -1,6 +1,6 @@
 <?php
 
-require_once 'env';
+require_once 'env.php';
 use Illuminate\Database\Capsule\Manager as Capsule;
 $capsule = new Capsule;
 
