@@ -26,5 +26,4 @@ class Response {
         return self::make($data, $status);
     }
 
-
 }

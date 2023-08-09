@@ -29,8 +29,14 @@ class UsersController
         // return Response::success(getData('users'));
         // return Response::error(getData('users'));
 
-        $name = "welcome ";
-        return view('index',compact('name'));
+        // return response([
+        //     'users'     => getData('users'),
+        //     'status'    => 200
+        // ]);
+        // dd(auth());
+        // dd(getAuthUser(1));
+        // $name = "welcome ";
+        // return view('index',compact('name'));
     }
 
     public function register(){

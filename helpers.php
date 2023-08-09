@@ -1,6 +1,8 @@
 <?php
 
+use Auth\Auth;
 use Core\Redirect\Redirect;
+use Core\Response\Response;
 use View\View;
 use Illuminate\Database\Capsule\Manager as DB;
 
@@ -33,6 +35,24 @@ if(!function_exists('assets')){
 if(!function_exists('tpl')){
     function tpl($path){
         return projectPath() . '/tpl/' . $path . '.blade.php';
+    }
+}
+
+if(!function_exists('response')){
+    function response($data = null){
+        return Response::json($data);
+    }
+}
+
+if(!function_exists('auth')){
+    function auth(){
+        return Auth::check();
+    }
+}
+
+if(!function_exists('getAuthUser')){
+    function getAuthUser($id){
+        return Auth::user($id);
     }
 }
 
