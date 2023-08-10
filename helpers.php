@@ -72,9 +72,17 @@ if(!function_exists('hasSession')){
     }
 }
 
-function session() {
-    return new Session();
+if(!function_exists('session')){
+    function session() {
+        return new Session();
+    }
 }
+if(!function_exists('db')){
+    function db(){
+        return new DB();
+    }
+}
+
 
 if(!function_exists('getData')){
     function getData($table = null, $where = null, $orderBy = null, $limit = null){
