@@ -4,7 +4,6 @@ namespace Core\Response;
 
 class Response {
 
-
     public static function json($data = null){
         return json_encode($data);
     }

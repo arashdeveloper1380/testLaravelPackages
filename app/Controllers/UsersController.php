@@ -10,6 +10,7 @@ use Auth\Auth;
 use Core\Redirect\Redirect;
 use Illuminate\Support\Facades\Redirect as FacadesRedirect;
 use Core\Response\Response;
+use View\View;
 
 class UsersController
 {
@@ -33,10 +34,11 @@ class UsersController
         //     'users'     => getData('users'),
         //     'status'    => 200
         // ]);
+
         // dd(auth());
         // dd(getAuthUser(1));
-        // $name = "welcome ";
-        // return view('index',compact('name'));
+        $name = "welcome ";
+        return view('index',compact('name'));
     }
 
     public function register(){

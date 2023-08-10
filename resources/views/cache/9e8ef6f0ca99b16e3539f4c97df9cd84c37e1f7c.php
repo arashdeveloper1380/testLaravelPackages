@@ -1,15 +1,9 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="<?php echo e(assets('css/style.css')); ?>">
-</head>
-<body>
+
+
+<?php $__env->startSection('content'); ?>
+
     <?php echo e(getData('users')); ?> <br><br>
     <?php echo e(findData('users', 1)['name']); ?> <br><br>
-    
     <?php echo e($name); ?>
 
     <form action="/login" method="post">
@@ -18,5 +12,5 @@
         <input type="submit">
     </form>
     
-</body>
-</html><?php /**PATH C:\xampp\htdocs\testLaravelPackages\tpl/index.blade.php ENDPATH**/ ?>
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('layouts.master', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\xampp\htdocs\testLaravelPackages\resources\views/index.blade.php ENDPATH**/ ?>

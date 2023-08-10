@@ -41,12 +41,6 @@ Class Auth {
         return null;
     }
 
-    public function __call($method, $arguments){
-        if($method == 'user'){
-            return $this->user(...$arguments);
-        }
-    }
-
     public static function check(){
         return isset($_SESSION['user_id']);
     }
@@ -84,9 +78,4 @@ Class Auth {
         ->setMessage($message)
         ->send();
     }
-
-    function auth(){
-        return new Auth();
-    }
-
 }
