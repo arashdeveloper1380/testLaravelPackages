@@ -79,6 +79,10 @@ class ComposerStaticInit7298d334784aa372d3330c2cda26f09e
             'Models\\' => 7,
             'Mailer\\' => 7,
         ),
+        'J' => 
+        array (
+            'JWTAuth\\' => 8,
+        ),
         'I' => 
         array (
             'Illuminate\\View\\' => 16,
@@ -104,6 +108,10 @@ class ComposerStaticInit7298d334784aa372d3330c2cda26f09e
             'GuzzleHttp\\Psr7\\' => 16,
             'GuzzleHttp\\Promise\\' => 19,
             'GuzzleHttp\\' => 11,
+        ),
+        'F' => 
+        array (
+            'Firebase\\JWT\\' => 13,
         ),
         'D' => 
         array (
@@ -259,6 +267,10 @@ class ComposerStaticInit7298d334784aa372d3330c2cda26f09e
         array (
             0 => __DIR__ . '/../..' . '/Core/Mailer',
         ),
+        'JWTAuth\\' => 
+        array (
+            0 => __DIR__ . '/../..' . '/Core/JWTAuth',
+        ),
         'Illuminate\\View\\' => 
         array (
             0 => __DIR__ . '/..' . '/illuminate/view',
@@ -328,6 +340,10 @@ class ComposerStaticInit7298d334784aa372d3330c2cda26f09e
         'GuzzleHttp\\' => 
         array (
             0 => __DIR__ . '/..' . '/guzzlehttp/guzzle/src',
+        ),
+        'Firebase\\JWT\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/firebase/php-jwt/src',
         ),
         'Doctrine\\Inflector\\' => 
         array (
