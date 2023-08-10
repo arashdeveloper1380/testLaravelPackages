@@ -10,6 +10,8 @@ use Auth\Auth;
 use Core\Redirect\Redirect;
 use Illuminate\Support\Facades\Redirect as FacadesRedirect;
 use Core\Response\Response;
+use JWTAuth\JWTAuth;
+use Session\Session;
 use View\View;
 
 class UsersController
@@ -22,6 +24,7 @@ class UsersController
 
     public function index()
     {
+        $session = new Session('session');
         // return Response::json([
         //     'users'     => getData('users'),
         //     'status'    => 200,
@@ -37,8 +40,16 @@ class UsersController
 
         // dd(auth());
         // dd(getAuthUser(1));
-        $name = "welcome ";
+        if($session->has('user_id')){
+            echo $session->get('user_id');
+        }
+        $name = "login page ";
         return view('index',compact('name'));
+    }
+
+    public function dashboard(){
+        return view('dashboard');
+
     }
 
     public function register(){
@@ -71,6 +82,8 @@ class UsersController
 
     public function login()
     {
+        $session = new Session('session');
+
         $validator = new Validator;
 
         $validation = $validator->make($_POST + $_FILES, [
@@ -84,8 +97,17 @@ class UsersController
             dd($validation->errors());
         }
 
-        $login = Auth::login($this->request->get('email'), md5($this->request->get('password')));
-        if($login){
+
+        // $login = JWTAuth::login($this->request->get('email'), md5($this->request->get('password')));
+
+        // if($login){
+        //     dd("login");
+        // }
+
+        $user = Auth::login($this->request->get('email'), md5($this->request->get('password')));
+
+        if($user){
+            $session->set('user_id',$user);
             Redirect::back();
         }
         dd("not match");

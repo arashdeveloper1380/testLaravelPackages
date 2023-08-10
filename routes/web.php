@@ -24,5 +24,8 @@ $router->get('/resset', [UsersController::class,'resset']);
 $router->post('/resset', [UsersController::class,'ressetStore']);
 
 
+
+$router->get('/dashboard', [UsersController::class,'dashboard']);
+
 $response = $router->dispatch($request);
 $response->send();

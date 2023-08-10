@@ -19,7 +19,8 @@
             "Helper\\": "Helper/",
             "Auth\\": "Core/Auth",
             "JWTAuth\\": "Core/JWTAuth",
-            "Mailer\\": "Core/Mailer"
+            "Mailer\\": "Core/Mailer",
+            "Session\\": "Core/Session"
         }
     },
     "require-dev": {

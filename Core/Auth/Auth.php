@@ -7,6 +7,7 @@ require_once 'vendor/autoload.php';
 use App\Models\User;
 use Rakit\Validation\Validator;
 use Mailer\Mailer;
+use Session\Session;
 
 Class Auth {
 
@@ -20,21 +21,32 @@ Class Auth {
     }
 
     public static function login($email, $password){
+        $session = new Session('session');
+
         $user = User::query()->where('email',$email)->first();
-        if($password === $user->password){
-            $_SESSION ['user_id'] = $user->id;
-            return true;
+        try { 
+            if($user){
+                if($password === $user->password){
+                    $session->set('user_id', $user->id);
+                    return true;
+                }
+            }
+        } catch (\Throwable $th) {
+            return "error : " . $th->getMessage();
         }
+        
     }
 
     public static function logout(){
-        if(isset($_SESSION['user_id'])){
+        $session = new Session('session');
+        if($session->has('user_id')){
             unset($_SESSION['user_id']);
         }
     }
 
     public static function user(){
-        if(isset($_SESSION['user_id'])){
+        $session = new Session('session');
+        if($session->has('user_id')){
             $user = User::find($_SESSION['user_id']);
             return $user;
         }
@@ -42,7 +54,8 @@ Class Auth {
     }
 
     public static function check(){
-        return isset($_SESSION['user_id']);
+        $session = new Session('session');
+        return $session->has('user_id');
     }
 
     public static function forgetPassword($email){

@@ -60,6 +60,7 @@ class ComposerStaticInit7298d334784aa372d3330c2cda26f09e
             'Symfony\\Component\\EventDispatcher\\' => 34,
             'Symfony\\Component\\ErrorHandler\\' => 31,
             'Symfony\\Component\\Console\\' => 26,
+            'Session\\' => 8,
         ),
         'R' => 
         array (
@@ -229,6 +230,10 @@ class ComposerStaticInit7298d334784aa372d3330c2cda26f09e
         'Symfony\\Component\\Console\\' => 
         array (
             0 => __DIR__ . '/..' . '/symfony/console',
+        ),
+        'Session\\' => 
+        array (
+            0 => __DIR__ . '/../..' . '/Core/Session',
         ),
         'Rakit\\Validation\\' => 
         array (
