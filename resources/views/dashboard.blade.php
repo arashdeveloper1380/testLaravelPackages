@@ -6,6 +6,10 @@
     <title>Document</title>
 </head>
 <body>
-    {{ getAuthUser() }}
+    <!-- @if(hasSession('user_id'))
+        {{ getAuthUser() }}
+    @endif -->
+
+    {{ session()->get('user_id') }}
 </body>
 </html>

@@ -6,7 +6,12 @@
     <title>Document</title>
 </head>
 <body>
-    <?php echo e(getAuthUser()); ?>
+    <!-- <?php if(hasSession('user_id')): ?>
+        <?php echo e(getAuthUser()); ?>
+
+    <?php endif; ?> -->
+
+    <?php echo e(session()->get('user_id')); ?>
 
 </body>
 </html><?php /**PATH C:\xampp\htdocs\testLaravelPackages\resources\views/dashboard.blade.php ENDPATH**/ ?>

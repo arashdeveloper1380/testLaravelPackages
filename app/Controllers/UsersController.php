@@ -82,7 +82,6 @@ class UsersController
 
     public function login()
     {
-        $session = new Session();
 
         $validator = new Validator;
 

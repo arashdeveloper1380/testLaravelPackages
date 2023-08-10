@@ -65,6 +65,17 @@ if(!function_exists('getSession')){
     }
 }
 
+if(!function_exists('hasSession')){
+    function hasSession($key){
+        $session = new Session();
+        return $session->has($key);
+    }
+}
+
+function session() {
+    return new Session();
+}
+
 if(!function_exists('getData')){
     function getData($table = null, $where = null, $orderBy = null, $limit = null){
 
