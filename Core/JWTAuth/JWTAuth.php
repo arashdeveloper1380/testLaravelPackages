@@ -3,6 +3,7 @@
 namespace JWTAuth;
 
 use App\Models\User;
+use Exception;
 use Firebase\JWT\JWT;
 use Firebase\JWT\Key;
 use Mailer\Mailer;
@@ -25,19 +26,20 @@ class JWTAuth {
     public static function login($email, $passwoord){
         $session = new Session();
         $user = User::query()->where('email', $email)->first();
-        if($passwoord === $user->password){
-
-            $payload = [
-                'user_id'   => $user->id,
-                'email'     => $user->email
-            ];
-
-            $jwt = JWT::encode($payload, self::$secret_key, 'HS256');
-            $session->set('jwt_token', $jwt);
-            // $_SESSION['jwt_token'] = $jwt;
-
-            return true;
+        
+        if($user){
+            if(md5($passwoord) === $user->password){
+                $payload = [
+                    'user_id'   => $user->id,
+                    'email'     => $user->email
+                ];
+    
+                $jwt = JWT::encode($payload, self::$secret_key, 'HS256');
+                // $session->set('jwt_token', $jwt);
+                return true;
+            }
         }
+        
     }
 
     public static function logout(){
@@ -52,18 +54,13 @@ class JWTAuth {
         $session = new Session();
         if($session->has('jwt_token')){
             $jwt = $session->get('jwt_token');
-            // $jwt = $_SESSION['jwt_token'];
-            $decoded = JWT::decode($jwt, self::$secret_key);
-
             try {
-
-                $user = User::query()->where($jwt->user->id);
+                $decoded = JWT::decode($jwt, self::$secret_key);
+                $user = User::find($decoded->user_id);
                 return $user;
-
-            } catch (\Throwable $th) {
-
-                echo "Invalid token: " . $th->getMessage();
-
+            } catch (Exception $e) {
+                // Handle invalid or expired token
+                echo "Invalid token: " . $e->getMessage();
             }
         }
         return null;

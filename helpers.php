@@ -5,6 +5,7 @@ use Core\Redirect\Redirect;
 use Core\Response\Response;
 use View\View;
 use Illuminate\Database\Capsule\Manager as DB;
+use JWTAuth\JWTAuth;
 use Session\Session;
 
 use function GuzzleHttp\default_ca_bundle;

@@ -27,7 +27,7 @@ Class Auth {
         $user = User::query()->where('email',$email)->first();
         try { 
             if($user){
-                if($password === $user->password){
+                if(md5($password) === $user->password){
                     $session->set('user_id', $user->id);
                     return true;
                 }
@@ -49,7 +49,7 @@ Class Auth {
     public static function user(){
         $session = new Session();
         if($session->has('user_id')){
-            $user = User::find($_SESSION['user_id']);
+            $user = User::find($session->get('user_id'));
             return $user;
         }
         return null;

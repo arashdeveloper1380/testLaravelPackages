@@ -45,7 +45,7 @@ class UsersController
 
     public function dashboard(){
         $session = new Session();
-        if($session->get('user_id')){
+        if($session->get('user_id') || $session->get('jwt_token')){
             return view('dashboard');
         }
         Redirect::to('/');
@@ -62,7 +62,7 @@ class UsersController
 
         $validation = $registerValidator->make($_POST + $_FILES, [
             'name'      => 'required',
-            'email'     => 'required|email|unique',
+            'email'     => 'required|email',
             'password'  => 'required',
         ]);
 
@@ -98,14 +98,7 @@ class UsersController
         }
 
 
-        // $login = JWTAuth::login($this->request->get('email'), md5($this->request->get('password')));
-
-        // if($login){
-        //     dd("login");
-        // }
-
-        $user = Auth::login($this->request->get('email'), md5($this->request->get('password')));
-
+        $user = Auth::login($this->request->get('email'), $this->request->get('password'));
         if($user){
             Redirect::to('/dashboard');
         }
