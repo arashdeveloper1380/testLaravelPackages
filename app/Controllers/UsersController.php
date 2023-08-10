@@ -24,7 +24,6 @@ class UsersController
 
     public function index()
     {
-        $session = new Session('session');
         // return Response::json([
         //     'users'     => getData('users'),
         //     'status'    => 200,
@@ -40,15 +39,16 @@ class UsersController
 
         // dd(auth());
         // dd(getAuthUser(1));
-        if($session->has('user_id')){
-            echo $session->get('user_id');
-        }
         $name = "login page ";
         return view('index',compact('name'));
     }
 
     public function dashboard(){
-        return view('dashboard');
+        $session = new Session();
+        if($session->get('user_id')){
+            return view('dashboard');
+        }
+        Redirect::to('/');
 
     }
 
@@ -82,7 +82,7 @@ class UsersController
 
     public function login()
     {
-        $session = new Session('session');
+        $session = new Session();
 
         $validator = new Validator;
 
@@ -107,8 +107,7 @@ class UsersController
         $user = Auth::login($this->request->get('email'), md5($this->request->get('password')));
 
         if($user){
-            $session->set('user_id',$user);
-            Redirect::back();
+            Redirect::to('/dashboard');
         }
         dd("not match");
     }

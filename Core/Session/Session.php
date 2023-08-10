@@ -2,15 +2,9 @@
 
 namespace Session;
 
+session_start();
+
 class Session {
-    private $sessionName;
-
-    public function __construct($sessionName) {
-        $this->sessionName = $sessionName;
-        session_name($this->sessionName);
-        session_start();
-    }
-
     public function set($key, $value) {
         $_SESSION[$key] = $value;
     }

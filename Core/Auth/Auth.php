@@ -5,6 +5,7 @@ namespace Auth;
 require_once 'vendor/autoload.php';
 
 use App\Models\User;
+use Core\Redirect\Redirect;
 use Rakit\Validation\Validator;
 use Mailer\Mailer;
 use Session\Session;
@@ -21,7 +22,7 @@ Class Auth {
     }
 
     public static function login($email, $password){
-        $session = new Session('session');
+        $session = new Session();
 
         $user = User::query()->where('email',$email)->first();
         try { 
@@ -38,14 +39,15 @@ Class Auth {
     }
 
     public static function logout(){
-        $session = new Session('session');
+        $session = new Session();
         if($session->has('user_id')){
-            unset($_SESSION['user_id']);
+            $session->remove('user_id');
+            Redirect::to('/');
         }
     }
 
     public static function user(){
-        $session = new Session('session');
+        $session = new Session();
         if($session->has('user_id')){
             $user = User::find($_SESSION['user_id']);
             return $user;
@@ -54,7 +56,7 @@ Class Auth {
     }
 
     public static function check(){
-        $session = new Session('session');
+        $session = new Session();
         return $session->has('user_id');
     }
 

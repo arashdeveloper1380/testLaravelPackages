@@ -4,6 +4,7 @@ require 'vendor/autoload.php';
 require_once 'Config/database.php';
 
 use App\Controllers\UsersController;
+use Auth\Auth;
 use Illuminate\Container\Container;
 use Illuminate\Events\Dispatcher;
 use Illuminate\Http\Request;
@@ -23,6 +24,7 @@ $router->post('/login', [UsersController::class,'login']);
 $router->get('/resset', [UsersController::class,'resset']);
 $router->post('/resset', [UsersController::class,'ressetStore']);
 
+$router->get('logout', [Auth::class,'logout']);
 
 
 $router->get('/dashboard', [UsersController::class,'dashboard']);

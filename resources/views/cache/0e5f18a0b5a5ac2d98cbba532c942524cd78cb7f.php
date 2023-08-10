@@ -6,7 +6,7 @@
     <title>Document</title>
 </head>
 <body>
-    <?php echo e(auth()); ?>
+    <?php echo e(getAuthUser()); ?>
 
 </body>
 </html><?php /**PATH C:\xampp\htdocs\testLaravelPackages\resources\views/dashboard.blade.php ENDPATH**/ ?>

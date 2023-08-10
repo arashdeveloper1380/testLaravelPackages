@@ -5,6 +5,8 @@ namespace JWTAuth;
 use App\Models\User;
 use Firebase\JWT\JWT;
 use Firebase\JWT\Key;
+use Mailer\Mailer;
+use Session\Session;
 
 class JWTAuth {
 
@@ -21,6 +23,7 @@ class JWTAuth {
     }
 
     public static function login($email, $passwoord){
+        $session = new Session();
         $user = User::query()->where('email', $email)->first();
         if($passwoord === $user->password){
 
@@ -30,25 +33,26 @@ class JWTAuth {
             ];
 
             $jwt = JWT::encode($payload, self::$secret_key, 'HS256');
-            $_SESSION['jwt_token'] = $jwt;
+            $session->set('jwt_token', $jwt);
+            // $_SESSION['jwt_token'] = $jwt;
 
             return true;
         }
     }
 
     public static function logout(){
-
-        if(isset($_SESSION['jwt_token'])){
-            unset($_SESSION['jwt_token']);
+        $session = new Session();
+        if($session->has('jwt_token')){
+            $session->remove('jwt_token');
         }
 
     }
 
     public static function user(){
-
-        if(isset($_SESSION['jwt_token'])){
-
-            $jwt = $_SESSION['jwt_token'];
+        $session = new Session();
+        if($session->has('jwt_token')){
+            $jwt = $session->get('jwt_token');
+            // $jwt = $_SESSION['jwt_token'];
             $decoded = JWT::decode($jwt, self::$secret_key);
 
             try {
@@ -67,8 +71,8 @@ class JWTAuth {
     }
 
     public static function check(){
-
-        return isset($_SESSION['jwt_token']);
+        $session = new Session();
+        return $session->get('jwt_token');
 
     }
 

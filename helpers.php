@@ -5,6 +5,7 @@ use Core\Redirect\Redirect;
 use Core\Response\Response;
 use View\View;
 use Illuminate\Database\Capsule\Manager as DB;
+use Session\Session;
 
 use function GuzzleHttp\default_ca_bundle;
 
@@ -51,8 +52,15 @@ if(!function_exists('auth')){
 }
 
 if(!function_exists('getAuthUser')){
-    function getAuthUser($id){
-        return Auth::user($id);
+    function getAuthUser(){
+        return Auth::user(getSession('user_id'));
+    }
+}
+
+if(!function_exists('getSession')){
+    function getSession($key){
+        $session = new Session();
+        $session->get($key);
     }
 }
 
