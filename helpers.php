@@ -1,6 +1,7 @@
 <?php
 
 use Auth\Auth;
+use Core\QueryBuilder\QueryBuilder;
 use Core\Redirect\Redirect;
 use Core\Response\Response;
 use View\View;
@@ -111,5 +112,11 @@ if(!function_exists('findData')){
         $find = DB::table($table)->find($id);
         $find = json_decode(json_encode($find), true);
         return $find;
+    }
+}
+
+if(!function_exists('qb')){
+    function qb(){
+        return QueryBuilder::qb('localhost', 'mini', 'root', '');
     }
 }
