@@ -8,10 +8,12 @@ class QueryBuilder {
 
     protected $pdo;
     protected $table;
+    protected $limit;
     protected $whereConditions = [];
     // protected $selectColumns = ['*'];
     protected $orderByColumn;
     protected $orderByDirection;
+    protected $insertData = [];
 
     public static function qb($host, $database, $username, $password){
         $dsn = "mysql:host={$host};dbname={$database}";
@@ -40,6 +42,11 @@ class QueryBuilder {
         return $this;
     }
 
+    public function limit($limit){
+        $this->limit = $limit;
+        return $this;
+    }
+
     public function first($select = ['*']){
         $query = "SELECT " . implode(', ', $select) . " FROM {$this->table}";
         if(!empty($this->whereConditions)){
@@ -63,7 +70,9 @@ class QueryBuilder {
 
             $statement->execute();
 
-            return $statement->fetch(PDO::FETCH_ASSOC);
+            return $statement->fetch(PDO::FETCH_OBJ);
+
+            return $this;
         }
     }
 
@@ -82,6 +91,10 @@ class QueryBuilder {
             $query .= " ORDER BY {$this->orderByColumn} {$this->orderByDirection}";
         }
 
+        if($this->limit){
+            $query .= " LIMIT {$this->limit}";
+        }
+
         $statement = $this->pdo->prepare($query);
 
         foreach ($this->whereConditions as $condition) {
@@ -90,6 +103,28 @@ class QueryBuilder {
 
         $statement->execute();
 
-        return $statement->fetchAll(PDO::FETCH_ASSOC);
+        return $statement->fetchAll(PDO::FETCH_OBJ);
     }
+
+
+    public function insert($data = []){
+        $this->insertData = $data;
+        $columns = implode(', ', array_keys($this->insertData));
+        $values = implode(", ", array_fill(0, count($this->insertData), "?"));
+        $bindings = array_values($this->insertData);
+
+        $query = "INSERT INTO {$this->table} ({$columns}) VALUES ({$values})";
+
+        $statement = $this->pdo->prepare($query);
+        $statement->execute($bindings);
+    }
+
+
+    public function delete($key, $oparator, $value){
+        $query = "DELETE FROM {$this->table} WHERE {$key}{$oparator}{$value}";
+        $statement = $this->pdo->prepare($query);
+
+        $statement->execute();
+    }
+
 }
