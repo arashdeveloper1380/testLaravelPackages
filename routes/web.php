@@ -15,19 +15,19 @@ $request = Request::capture();
 $dispatcher = new Dispatcher($container);
 $router = new Router($dispatcher, $container);
 
-$router->get('/', [UsersController::class,'index']);
+// web
+$router->get('/', [UsersController::class, 'index']);
+$router->get('/register', [UsersController::class, 'register']);
+$router->post('/register-store', [UsersController::class, 'registerStore']);
+$router->post('/login', [UsersController::class, 'login']);
+$router->get('/reset', [UsersController::class, 'reset']);
+$router->post('/reset', [UsersController::class, 'resetStore']);
+$router->get('/logout', [Auth::class, 'logout']);
+$router->get('/dashboard', [UsersController::class, 'dashboard']);
 
 
-$router->get('/register', [UsersController::class,'register']);
-$router->post('/register-store', [UsersController::class,'registerStore']);
-$router->post('/login', [UsersController::class,'login']);
-$router->get('/resset', [UsersController::class,'resset']);
-$router->post('/resset', [UsersController::class,'ressetStore']);
-
-$router->get('logout', [Auth::class,'logout']);
-
-
-$router->get('/dashboard', [UsersController::class,'dashboard']);
+// api
+include 'api.php';
 
 $response = $router->dispatch($request);
 $response->send();

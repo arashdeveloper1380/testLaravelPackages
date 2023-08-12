@@ -127,6 +127,7 @@ class ComposerStaticInit7298d334784aa372d3330c2cda26f09e
         array (
             'Auth\\' => 5,
             'App\\' => 4,
+            'Api\\' => 4,
         ),
     );
 
@@ -369,6 +370,10 @@ class ComposerStaticInit7298d334784aa372d3330c2cda26f09e
         'App\\' => 
         array (
             0 => __DIR__ . '/../..' . '/App',
+        ),
+        'Api\\' => 
+        array (
+            0 => __DIR__ . '/../..' . '/App/Controllers/Api',
         ),
     );
 

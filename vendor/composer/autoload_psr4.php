@@ -65,4 +65,5 @@ return array(
     'Carbon\\' => array($vendorDir . '/nesbot/carbon/src/Carbon'),
     'Auth\\' => array($baseDir . '/Core/Auth'),
     'App\\' => array($baseDir . '/App'),
+    'Api\\' => array($baseDir . '/App/Controllers/Api'),
 );

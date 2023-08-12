@@ -20,7 +20,8 @@
             "Auth\\": "Core/Auth",
             "JWTAuth\\": "Core/JWTAuth",
             "Mailer\\": "Core/Mailer",
-            "Session\\": "Core/Session"
+            "Session\\": "Core/Session",
+            "Api\\": "App/Controllers/Api"
         }
     },
     "require-dev": {
