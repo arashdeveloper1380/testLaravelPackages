@@ -41,9 +41,30 @@ class QueryBuilder {
     }
 
     public function first($select = ['*']){
+        $query = "SELECT " . implode(', ', $select) . " FROM {$this->table}";
+        if(!empty($this->whereConditions)){
+            $query .= " WHERE ";
+            foreach ($this->whereConditions as $condition){
+                $query .= "{$condition[0]} {$condition[1]} :{$condition[0]} AND ";
+            }
+            $query = rtrim($query, " AND ");
 
-        $query = "SELECT ";
+            if ($this->orderByColumn) {
+                $query .= " ORDER BY {$this->orderByColumn} {$this->orderByDirection}";
+            }
 
+            $query .= " LIMIT 1";
+
+            $statement = $this->pdo->prepare($query);
+
+            foreach ($this->whereConditions as $condition) {
+                $statement->bindValue(":{$condition[0]}", $condition[2]);
+            }
+
+            $statement->execute();
+
+            return $statement->fetch(PDO::FETCH_ASSOC);
+        }
     }
 
     public function get($select = ['*']){

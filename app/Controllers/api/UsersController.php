@@ -17,7 +17,7 @@ class UsersController{
             ->where('id', '!=', 7)
             ->where('name', '=', 'arash')
             ->orderBy('id', 'DESC')
-            ->get();
+            ->first();
 
         return response([
             'users'     => $result,
