@@ -25,6 +25,11 @@ class UsersController{
             'status'    => 200
         ]);
     }
+
+    public function find(){
+        dd(qb()->table('users')->find(1));
+    }
+
     public function store(){
         qb()->table('users')
         ->insert([

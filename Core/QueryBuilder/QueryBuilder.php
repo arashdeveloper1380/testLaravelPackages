@@ -106,6 +106,15 @@ class QueryBuilder {
         return $statement->fetchAll(PDO::FETCH_OBJ);
     }
 
+    public function find($id, $select = ['*']){
+        $query = "SELECT " . implode(', ', $select) . " FROM {$this->table} WHERE id = :id";
+        $statement = $this->pdo->prepare($query);
+        
+        $statement->bindValue(':id', $id);
+        $statement->execute();
+
+        return $statement->fetch(PDO::FETCH_OBJ);
+    }
 
     public function insert($data = []){
         $this->insertData = $data;
@@ -126,5 +135,6 @@ class QueryBuilder {
 
         $statement->execute();
     }
+
 
 }
