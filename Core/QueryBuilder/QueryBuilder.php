@@ -87,6 +87,27 @@ class QueryBuilder {
         return $this;
     }
 
+    public function delete()
+    {
+        $query = "DELETE FROM {$this->table}";
+
+        if (!empty($this->whereConditions)) {
+            $query .= " WHERE ";
+            foreach ($this->whereConditions as $condition) {
+                $query .= "{$condition[0]} {$condition[1]} :{$condition[0]} AND ";
+            }
+            $query = rtrim($query, " AND ");
+        }
+
+        $statement = $this->pdo->prepare($query);
+
+        foreach ($this->whereConditions as $condition) {
+            $statement->bindValue(":{$condition[0]}", $condition[2]);
+        }
+
+        $statement->execute();
+    }
+
     public function get($select = ['*']){
         $query = "SELECT " . implode(', ', $select) . " FROM {$this->table}";
 
@@ -145,12 +166,24 @@ class QueryBuilder {
         $statement->execute($bindings);
     }
 
+    public function update($data = []){
+        $columns = implode(' = ?, ', array_keys($data)) . ' = ?';
+        $bindings = [];
 
-    public function delete($key, $oparator, $value){
-        $query = "DELETE FROM {$this->table} WHERE {$key}{$oparator}{$value}";
+        $query = "UPDATE {$this->table} SET {$columns}";
+
+        if (!empty($this->whereConditions)) {
+            $whereConditions = [];
+            foreach ($this->whereConditions as $index => $condition) {
+                $whereConditions[] = "{$condition[0]} {$condition[1]} ?";
+                $bindings[] = $condition[2];
+            }
+            $query .= " WHERE " . implode(' AND ', $whereConditions);
+        }
+
         $statement = $this->pdo->prepare($query);
-
-        $statement->execute();
+        
+        $statement->execute($bindings);
     }
 
 

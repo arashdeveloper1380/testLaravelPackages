@@ -50,15 +50,8 @@ class UsersController{
         // if(!$user){
         //     dd("not found"); 
         // }
-        $user = qb()->table('users')->where('id', '=', 19)->first();
-        if(!$user){
-            return response([
-                'message'   => 'user not found',
-                'status'    => 400
-            ], 400); 
-        }
     
-        qb()->table('users')->delete('id', '=', $user->id);
+        $user = qb()->table('users')->where('id', '=', 20)->delete();
         return response([
             'message'   => 'deleted user',
             'status'    => 200
@@ -67,9 +60,19 @@ class UsersController{
 
     public function join(){
         $userJoin = qb()->table('users')->join('orders','users.id', '=', 'orders.user_id')->get();
-        
+
         return response([
             'join'      => $userJoin,
+            'status'    => 200,
+        ]);
+    }
+
+    public function update($id){
+        $user = qb()->table('users')->where('id', '=', $id)->update(['name' => 'arash_narimani']);
+        dd($user);
+        return response([
+            'user'      => $user,
+            'message'   => 'user updated',
             'status'    => 200,
         ]);
     }

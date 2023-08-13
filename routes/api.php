@@ -8,5 +8,5 @@ $router->prefix('api')->group(function () use ($router) {
     $router->get('/store', [UsersController::class, 'store']);
     $router->get('/destroy', [UsersController::class, 'destroy']);
     $router->get('/join', [UsersController::class, 'join']);
-    
+    $router->get('/update/{id}', [UsersController::class, 'update']);
 });
