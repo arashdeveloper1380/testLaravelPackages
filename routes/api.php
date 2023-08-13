@@ -7,5 +7,6 @@ $router->prefix('api')->group(function () use ($router) {
     $router->get('/find', [UsersController::class, 'find']);
     $router->get('/store', [UsersController::class, 'store']);
     $router->get('/destroy', [UsersController::class, 'destroy']);
+    $router->get('/join', [UsersController::class, 'join']);
     
 });

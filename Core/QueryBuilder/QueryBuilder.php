@@ -9,11 +9,12 @@ class QueryBuilder {
     protected $pdo;
     protected $table;
     protected $limit;
-    protected $whereConditions = [];
     // protected $selectColumns = ['*'];
     protected $orderByColumn;
     protected $orderByDirection;
-    protected $insertData = [];
+    protected $insertData       = [];
+    protected $joinConditions   = [];
+    protected $whereConditions  = [];
 
     public static function qb($host, $database, $username, $password){
         $dsn = "mysql:host={$host};dbname={$database}";
@@ -76,8 +77,24 @@ class QueryBuilder {
         }
     }
 
+    public function join($table, $firstColumn, $operator, $secondColumn){
+        $this->joinConditions[] = [
+            'table'         => $table,
+            'firstColumn'   => $firstColumn,
+            'operator'      => $operator,
+            'secondColumn'  => $secondColumn
+        ];
+        return $this;
+    }
+
     public function get($select = ['*']){
         $query = "SELECT " . implode(', ', $select) . " FROM {$this->table}";
+
+        if($this->joinConditions){
+            foreach ($this->joinConditions as $joinCondition) {
+                $query .= " JOIN {$joinCondition['table']} ON {$joinCondition['firstColumn']} {$joinCondition['operator']} {$joinCondition['secondColumn']}";
+            }
+        }
 
         if (!empty($this->whereConditions)) {
             $query .= " WHERE ";
@@ -109,7 +126,7 @@ class QueryBuilder {
     public function find($id, $select = ['*']){
         $query = "SELECT " . implode(', ', $select) . " FROM {$this->table} WHERE id = :id";
         $statement = $this->pdo->prepare($query);
-        
+
         $statement->bindValue(':id', $id);
         $statement->execute();
 
