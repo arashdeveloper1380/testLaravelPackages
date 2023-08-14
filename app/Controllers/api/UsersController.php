@@ -62,7 +62,7 @@ class UsersController{
         $userJoin = qb()->table('users')->join('orders','users.id', '=', 'orders.user_id')->get();
 
         return response([
-            'join'      => $userJoin,
+            'user'      => $userJoin,
             'status'    => 200,
         ]);
     }

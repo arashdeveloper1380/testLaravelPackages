@@ -11,7 +11,7 @@
     </style>
 </head>
 <body>
-
+    {{ getAuthUser()}}
     <table>
         <tr>
             <th>#</th>

@@ -33,9 +33,9 @@ if(!function_exists('assets')){
     }
 }
 
-if(!function_exists('tpl')){
-    function tpl($path){
-        return projectPath() . '/tpl/' . $path . '.blade.php';
+if(!function_exists('views')){
+    function views($path){
+        return projectPath() . '/resources/views/' . $path . '.blade.php';
     }
 }
 
