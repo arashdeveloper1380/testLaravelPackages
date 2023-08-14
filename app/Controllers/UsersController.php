@@ -99,7 +99,8 @@ class UsersController
 
         $user = Auth::login($this->request->get('email'), $this->request->get('password'));
         if($user){
-            Redirect::to('/dashboard');
+            // Redirect::to('/dashboard');
+            return response(['redirect' => '/dashboard']);
         }
         dd("not match");
     }

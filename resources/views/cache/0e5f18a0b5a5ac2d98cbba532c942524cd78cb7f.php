@@ -19,15 +19,13 @@
             <th>mobile</th>
         </tr>
         <tbody>
-            
             <?php $__currentLoopData = db()->table('users')->get(); $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $key => $value): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-            <tr>
-                <td><?php echo e($key +1); ?></td>
-                <td><?php echo e($value->name); ?></td>
-                <td><?php echo e($value->phone); ?></td>
-            </tr>
+                <tr>
+                    <td><?php echo e($key +1); ?></td>
+                    <td><?php echo e($value->name); ?></td>
+                    <td><?php echo e($value->phone); ?></td>
+                </tr>
             <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
-            
         </tbody>
     </table>
     <!-- <?php if(hasSession('user_id')): ?>

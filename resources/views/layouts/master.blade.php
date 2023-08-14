@@ -10,5 +10,6 @@
     <h1>header</h1>
         @yield('content')
     <h1>footer</h1>
+    <script src="{{ assets('js/htmx.min.js') }}"></script>
 </body>
 </html>

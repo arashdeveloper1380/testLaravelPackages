@@ -2,6 +2,9 @@
 
 require 'vendor/autoload.php';
 require_once 'Config/database.php';
+use Tracy\Debugger;
+
+Debugger::enable();
 
 use App\Controllers\UsersController;
 use Auth\Auth;

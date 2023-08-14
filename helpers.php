@@ -9,8 +9,6 @@ use Illuminate\Database\Capsule\Manager as DB;
 use JWTAuth\JWTAuth;
 use Session\Session;
 
-use function GuzzleHttp\default_ca_bundle;
-
 if(!function_exists('dd')){
     function dd($value){
         dump($value);

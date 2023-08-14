@@ -10,5 +10,6 @@
     <h1>header</h1>
         <?php echo $__env->yieldContent('content'); ?>
     <h1>footer</h1>
+    <script src="<?php echo e(assets('js/htmx.min.js')); ?>"></script>
 </body>
 </html><?php /**PATH C:\xampp\htdocs\testLaravelPackages\resources\views/layouts/master.blade.php ENDPATH**/ ?>
