@@ -33,7 +33,7 @@ if(!function_exists('public_path')){
 
 if(!function_exists('assets')){
     function assets($path){
-        return app_path() . '/public/' . $path;
+        return Path::assets($path);
     }
 }
 
