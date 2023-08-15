@@ -5,46 +5,64 @@ use Core\Support\Path\Path;
 use Core\QueryBuilder\QueryBuilder;
 use Core\Redirect\Redirect;
 use Core\Response\Response;
+use Core\Support\Url\Url;
 use View\View;
 use Illuminate\Database\Capsule\Manager as DB;
 use JWTAuth\JWTAuth;
 use Session\Session;
 
-// Path Helpers
+// ------------------ Path ------------------
 
-if(!function_exists('app_path')){
-    function app_path(){
-        return Path::app_path();
+    if(!function_exists('app_path')){
+        function app_path(){
+            return Path::app_path();
+        }
     }
-}
 
-if(!function_exists('database_path')){
-    function database_path(){
-        return Path::database_path();
+    if(!function_exists('database_path')){
+        function database_path(){
+            return Path::database_path();
+        }
     }
-}
 
-if(!function_exists('public_path')){
-    function public_path(){
-        return Path::public_path();
+    if(!function_exists('public_path')){
+        function public_path(){
+            return Path::public_path();
+        }
     }
-}
 
 
-if(!function_exists('assets')){
-    function assets($path){
-        return Path::assets($path);
+    if(!function_exists('assets')){
+        function assets($path){
+            return Path::assets($path);
+        }
     }
-}
 
-if(!function_exists('views')){
-    function views($path){
-        return app_path() . '/resources/views/' . $path . '.blade.php';
+    if(!function_exists('views')){
+        function views($path){
+            return app_path() . '/resources/views/' . $path . '.blade.php';
+        }
     }
-}
+
+// ------------------ Path ------------------
 
 
 
+// ------------------ Url ------------------
+
+    if(!function_exists('url')){
+        function url($url = null){
+            return Url::url($url);
+        }
+    }
+
+    if(!function_exists('route')){
+        function route($route_name){
+            return Url::route($route_name);
+        }
+    }
+
+// ------------------ Url ------------------
 
 
 if(!function_exists('dd')){

@@ -11,6 +11,7 @@ use Core\Redirect\Redirect;
 use Illuminate\Support\Facades\Redirect as FacadesRedirect;
 use Core\Response\Response;
 use Core\Support\Path\Path;
+use Core\Support\Url\Url;
 use JWTAuth\JWTAuth;
 use Session\Session;
 use View\View;
