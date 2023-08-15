@@ -20,7 +20,7 @@ class View{
             $viewPaths = ['resources/views'];
             $fileSystem = new Filesystem;
             $viewFinder = new FileViewFinder($fileSystem, $viewPaths);
-            $bladeCompiler = new BladeCompiler($fileSystem, projectPath() . 'resources/views/cache');
+            $bladeCompiler = new BladeCompiler($fileSystem, public_path() . 'resources/views/cache');
             $resolver = new EngineResolver;
             $resolver->register('blade', function () use ($bladeCompiler) {
                 return new CompilerEngine($bladeCompiler);

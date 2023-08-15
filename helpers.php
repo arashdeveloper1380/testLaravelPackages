@@ -1,6 +1,7 @@
 <?php
 
 use Auth\Auth;
+use Core\Support\Path\Path;
 use Core\QueryBuilder\QueryBuilder;
 use Core\Redirect\Redirect;
 use Core\Response\Response;
@@ -8,6 +9,43 @@ use View\View;
 use Illuminate\Database\Capsule\Manager as DB;
 use JWTAuth\JWTAuth;
 use Session\Session;
+
+// Path Helpers
+
+if(!function_exists('app_path')){
+    function app_path(){
+        return Path::app_path();
+    }
+}
+
+if(!function_exists('database_path')){
+    function database_path(){
+        return Path::database_path();
+    }
+}
+
+if(!function_exists('public_path')){
+    function public_path(){
+        return Path::public_path();
+    }
+}
+
+
+if(!function_exists('assets')){
+    function assets($path){
+        return app_path() . '/public/' . $path;
+    }
+}
+
+if(!function_exists('views')){
+    function views($path){
+        return app_path() . '/resources/views/' . $path . '.blade.php';
+    }
+}
+
+
+
+
 
 if(!function_exists('dd')){
     function dd($value){
@@ -18,24 +56,6 @@ if(!function_exists('dd')){
 if(!function_exists('view')){
     function view($view, $param = []){
         return View::renderBlade($view,$param);
-    }
-}
-
-if(!function_exists('projectPath')){
-    function projectPath(){
-        $_SERVER['DOCUMENT_ROOT'];
-    }
-}
-
-if(!function_exists('assets')){
-    function assets($path){
-        return projectPath() . '/public/' . $path;
-    }
-}
-
-if(!function_exists('views')){
-    function views($path){
-        return projectPath() . '/resources/views/' . $path . '.blade.php';
     }
 }
 
