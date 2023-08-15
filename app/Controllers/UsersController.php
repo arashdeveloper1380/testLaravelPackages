@@ -8,8 +8,8 @@ use Illuminate\Http\Request;
 use Rakit\Validation\Validator;
 use Auth\Auth;
 use Core\Redirect\Redirect;
-use Illuminate\Support\Facades\Redirect as FacadesRedirect;
 use Core\Response\Response;
+use Core\Support\Arr\Arr;
 use Core\Support\Path\Path;
 use Core\Support\Url\Url;
 use JWTAuth\JWTAuth;
@@ -41,6 +41,9 @@ class UsersController
 
         // dd(auth());
         // dd(getAuthUser(1));
+        $arr = arr();
+        $arr->add();
+        echo $arr->get('name');
         $name = "login page ";
         return view('index',compact('name'));
     }

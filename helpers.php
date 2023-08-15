@@ -5,6 +5,7 @@ use Core\Support\Path\Path;
 use Core\QueryBuilder\QueryBuilder;
 use Core\Redirect\Redirect;
 use Core\Response\Response;
+use Core\Support\Arr\Arr;
 use Core\Support\Url\Url;
 use View\View;
 use Illuminate\Database\Capsule\Manager as DB;
@@ -64,6 +65,17 @@ use Session\Session;
 
 // ------------------ Url ------------------
 
+
+
+// ------------------ Arr ------------------
+
+    if(!function_exists('arr')){
+        function arr(){
+            return new Arr();
+        }
+    }
+
+// ------------------ Arr ------------------
 
 if(!function_exists('dd')){
     function dd($value){
