@@ -41,9 +41,18 @@ class UsersController
 
         // dd(auth());
         // dd(getAuthUser(1));
-        $arr = arr();
-        $arr->add();
-        echo $arr->get('name');
+
+        $array = [
+            'user' => [
+                'name'  => 'arash',
+                'email' => 'arash@gmail.com'
+            ]
+        ];
+        // echo Arr::has($array, 'user.name');
+        // echo Arr::get($array, 'user.email');
+        // Arr::add($array, 'user.name', 'hasan');
+        // echo $array ['user'] ['name'];
+
         $name = "login page ";
         return view('index',compact('name'));
     }

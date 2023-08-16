@@ -4,9 +4,29 @@ namespace Core\Support\Arr;
 
 interface ArrInterface {
 
-    public function add($element);
 
-    public function get($key);
+    /**
+     * @param array $array
+     * @param string $key
+     * @param mixed $default
+     * @return mixed
+     */
+    public static function get($array, $key, $default = null);
 
-    public function size();
+
+    /**
+     * @param array $array
+     * @param string $key
+     * @return bool
+     */
+    public static function has($array, $key);
+
+    /**
+     * @param  array  $array
+     * @param  string  $key
+     * @param  mixed  $value
+     * @return array
+     */
+    public static function add(&$array, $key, $value);
+
 }
