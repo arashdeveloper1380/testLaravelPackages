@@ -154,4 +154,85 @@ class Arr implements ArrInterface{
     }
 
 
+    /**
+     * @param array $array
+     * @param string $key
+     * @return array
+     */
+    public static function whereNotNull($array){
+        if(empty($array)){
+            return [];
+        }
+
+        return array_filter($array, function($value){
+            return $value !== null;
+        });
+    }
+
+
+    /**
+     * @param array $array
+     * @param string $key
+     * @return bool
+     */
+    public static function exists($array, $key){
+        if(empty($array)){
+            return [];
+        }
+        return array_key_exists($key, $array);
+    }
+
+
+    /**
+     * @param array $array
+     * @param string $key
+     * @return array
+     */
+    public static function excerpt($array, $keys){
+        if(!is_array($array)){
+            return [];
+        }
+
+        if(!is_array($array)){
+            $keys = [$keys];
+        }
+
+        return array_diff_key($array, array_flip($keys));
+    }
+
+
+    /**
+     * @param array $array
+     * @param string $key
+     * @return string
+     */
+    public static function first($array, $keyOrValue = "value"){
+        if(!is_array($array)){
+            return [];
+        }
+
+        if($keyOrValue == "key"){
+            return array_shift(array_keys($array));
+        }
+
+        if($keyOrValue == "value"){
+            return array_shift(array_values($array));
+        }
+        
+    }
+
+
+    /**
+     * @param array $array
+     * @return string
+     */
+    public static function sort($array){
+        if(!is_array($array) || is_null($array) || empty($array)){
+            return [];
+        }
+        sort($array);
+        return $array;
+    }
+
+
 }

@@ -48,7 +48,15 @@ class UsersController
         //         'email' => 'arash@gmail.com'
         //     ]
         // ];
-        $arr = ['arash', 'hasan', 'mahamad'];
+        // $arr = ['name' => 'arash', 'hasan' => 12, 'mahamad' => true];
+        // dd(Arr::first($arr));
+        // dd(Arr::excerpt($arr, ['name', 'hasan']));
+        // if(Arr::exists($arr, 'name')){
+        //     return 1;
+        // }else{
+        //     return 0;
+        // }
+
         // echo Arr::last($arr);
         // echo Arr::join($arr, ',');
 
@@ -57,12 +65,12 @@ class UsersController
         // Arr::add($array, 'user.name', 'hasan');
         // echo $array ['user'] ['name'];
 
-        $users = [
-            ['id' => 1, 'name' => 'arash'],
-            ['id' => 2, 'name' => 'ali'],
-            ['id' => 3, 'name' => 'kazim'],
-        ];
-        dd(Arr::pluck($users, 'name'));
+        // $users = [
+        //     ['id' => 1, 'name' => 'arash'],
+        //     ['id' => 2, 'name' => 'ali'],
+        //     ['id' => 3, 'name' => 'kazim'],
+        // ];
+        // dd(Arr::pluck($users, 'name'));
         // $data = [
         //     'name' => 'John',
         //     'age' => 30,
@@ -75,6 +83,9 @@ class UsersController
 
         // $result = Arr::keyBy($users, 'name');
         // dd($result);
+
+        // $sort = [5, 2, 6, 1];
+        // dd(Arr::sort($sort));
         
         $name = "login page ";
         return view('index',compact('name'));

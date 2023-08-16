@@ -69,4 +69,42 @@ interface ArrInterface {
      */
     public static function pluck($array, $key);
 
+
+    /**
+     * @param array $array
+     * @param string $key
+     * @return array
+     */
+    public static function whereNotNull($array);
+
+
+    /**
+     * @param array $array
+     * @param string $key
+     * @return bool
+     */
+    public static function exists($array, $key);
+
+
+    /**
+     * @param array $array
+     * @param string $key
+     * @return array
+     */
+    public static function excerpt($array, $key);
+
+
+    /**
+     * @param array $array
+     * @return string
+     */
+    public static function first($array, $keyOrValue);
+
+
+    /**
+     * @param array $array
+     * @return string
+     */
+    public static function sort($array);
+
 }
