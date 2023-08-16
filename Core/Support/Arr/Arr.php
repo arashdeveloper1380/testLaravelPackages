@@ -224,12 +224,13 @@ class Arr implements ArrInterface{
 
     /**
      * @param array $array
-     * @return string
+     * @return array
      */
     public static function sort($array){
         if(!is_array($array) || is_null($array) || empty($array)){
             return [];
         }
+        
         sort($array);
         return $array;
     }
