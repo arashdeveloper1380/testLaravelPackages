@@ -42,17 +42,40 @@ class UsersController
         // dd(auth());
         // dd(getAuthUser(1));
 
-        $array = [
-            'user' => [
-                'name'  => 'arash',
-                'email' => 'arash@gmail.com'
-            ]
-        ];
+        // $array = [
+        //     'user' => [
+        //         'name'  => 'arash',
+        //         'email' => 'arash@gmail.com'
+        //     ]
+        // ];
+        $arr = ['arash', 'hasan', 'mahamad'];
+        // echo Arr::last($arr);
+        // echo Arr::join($arr, ',');
+
         // echo Arr::has($array, 'user.name');
         // echo Arr::get($array, 'user.email');
         // Arr::add($array, 'user.name', 'hasan');
         // echo $array ['user'] ['name'];
 
+        $users = [
+            ['id' => 1, 'name' => 'arash'],
+            ['id' => 2, 'name' => 'ali'],
+            ['id' => 3, 'name' => 'kazim'],
+        ];
+        dd(Arr::pluck($users, 'name'));
+        // $data = [
+        //     'name' => 'John',
+        //     'age' => 30,
+        //     'email' => 'john@example.com',
+        //     'address' => '123 Main St',
+        // ];
+        
+        // $filteredData = Arr::only($data, ['name', 'email']);
+        // dd(Arr::only($data, ['name', 'address']));
+
+        // $result = Arr::keyBy($users, 'name');
+        // dd($result);
+        
         $name = "login page ";
         return view('index',compact('name'));
     }

@@ -90,4 +90,68 @@ class Arr implements ArrInterface{
         return $array;
     }
 
+    /**
+     * @param  array  $array
+     * @param  string  $key
+     * @param  mixed  $value
+     * @return string
+     */
+    public static function join($array, $separator){
+        return implode($separator, $array);
+    }
+
+    /**
+     * @param  array  $array
+     * @param  string  $key
+     * @return array
+     */
+    public static function keyBy($array, $key){
+        $result = [];
+
+        foreach ($array as $item){
+            if(isset($item[$key])){
+                $result[$item[$key]] = $item;
+            }
+        }
+
+        return $result;
+    }
+
+
+    /**
+     * @param  array  $array
+     * @return string
+     */
+    public static function last($array){
+        if(empty($array)){
+            return null;
+        }
+
+        return end($array);
+    }
+
+
+    /**
+     * @param array $array
+     * @param string $key
+     * @return array
+     */
+    public static function only($array, $keys){
+        return array_intersect_key($array, array_flip($keys));
+    }
+
+
+    /**
+     * @param array $array
+     * @param string $key
+     * @return array
+     */
+    public static function pluck($array, $key){
+        if(empty($array) || is_null($array)){
+            return [];
+        }
+        return array_column($array, $key);
+    }
+
+
 }
