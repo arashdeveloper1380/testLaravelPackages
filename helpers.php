@@ -181,3 +181,9 @@ if(!function_exists('qb')){
         return QueryBuilder::qb('localhost', 'mini', 'root', '');
     }
 }
+
+if(!function_exists('urlIs')){
+    function urlIs($value){
+        return $_SERVER['REQUEST_URI'] === $value;
+    }
+}
