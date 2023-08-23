@@ -4,6 +4,7 @@ use Auth\Auth;
 use Core\Support\Path\Path;
 use Core\QueryBuilder\QueryBuilder;
 use Core\Redirect\Redirect;
+use Core\Request\Request;
 use Core\Response\Response;
 use Core\Support\Arr\Arr;
 use Core\Support\Url\Url;
@@ -77,6 +78,16 @@ use Session\Session;
 
 // ------------------ Arr ------------------
 
+
+// ------------------ Request ------------------
+
+    if(!function_exists('request')){
+        function request(){
+            return new Request;
+        }
+    }
+
+// ------------------ Request ------------------
 
 
 if(!function_exists('dd')){
