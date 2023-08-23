@@ -2,14 +2,13 @@
 
 use Core\Container\Container;
 use Core\QueryBuilder\QueryBuilder;
-use Core\Request\Request;
 
 $container = new Container();
 
-$container->bind('Core\Request\Request',  function (){
-    return new Request();
+$container->bind('Core\QueryBuilder\QueryBuilder',  function (){
+    return QueryBuilder::qb('localhost', 'mini', 'root', '');
 });
 
-$request = $container->resolve('Core\Request\Request');
+$query_builder = $container->resolve('Core\QueryBuilder\QueryBuilder');
 
-dd($request);
+dd($query_builder);
