@@ -5,6 +5,7 @@ require_once 'Config/database.php';
 use Tracy\Debugger;
 
 Debugger::enable();
+Debugger::$showBar = false;
 
 use App\Controllers\UsersController;
 use Auth\Auth;

@@ -21,7 +21,7 @@ class Response {
         return self::make($data, 200);
     }
 
-    public static function error($status = 500, $data = null) {
+    public static function error($status = 403, $data = null) {
         return self::make($data, $status);
     }
 

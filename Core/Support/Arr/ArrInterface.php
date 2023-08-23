@@ -105,6 +105,6 @@ interface ArrInterface {
      * @param array $array
      * @return string
      */
-    public static function sort($array);
+    public function sort($array);
 
 }

@@ -84,7 +84,8 @@ class UsersController
         // $result = Arr::keyBy($users, 'name');
         // dd($result);
 
-        // $sort = [5, 2, 6, 1];
+        $sort = [5, 2, 6, 1];
+        // dd(arr()->sort($sort));
         // dd(Arr::sort($sort));
         
         $name = "login page ";

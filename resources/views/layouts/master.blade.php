@@ -11,5 +11,6 @@
         @yield('content')
     <h1>footer</h1>
     <script src="{{ assets('js/htmx.min.js') }}"></script>
+    <script src="{{ assets('js/torbolink.js') }}"></script>
 </body>
 </html>

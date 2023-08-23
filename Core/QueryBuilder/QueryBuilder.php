@@ -164,6 +164,11 @@ class QueryBuilder {
 
         $statement = $this->pdo->prepare($query);
         $statement->execute($bindings);
+
+        $newUserId = $this->pdo->lastInsertId();
+        $newUser = $this->find($newUserId);
+        return $newUser;
+
     }
 
     public function update($data = []){
