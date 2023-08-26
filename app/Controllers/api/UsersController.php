@@ -7,6 +7,7 @@ use App\Models\User;
 use Core\QueryBuilder\QueryBuilder;
 use Illuminate\Support\Facades\Request;
 use Rakit\Validation\Validator;
+use Core\App\App;
 
 class UsersController{
 

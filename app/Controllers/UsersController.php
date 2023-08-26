@@ -7,6 +7,7 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Rakit\Validation\Validator;
 use Auth\Auth;
+use Core\App\App;
 use Core\Redirect\Redirect;
 use Core\Response\Response;
 use Core\Support\Arr\Arr;
@@ -16,8 +17,7 @@ use JWTAuth\JWTAuth;
 use Session\Session;
 use View\View;
 
-class UsersController
-{
+class UsersController extends Controller{
     protected $request;
 
     public function __construct(){
@@ -87,7 +87,9 @@ class UsersController
         $sort = [5, 2, 6, 1];
         // dd(arr()->sort($sort));
         // dd(Arr::sort($sort));
-        
+
+        $logger = App::container()->resolve('Core\Logger\Logger');
+        $logger->log("this is container logger");
         $name = "login page ";
         return view('index',compact('name'));
     }

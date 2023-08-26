@@ -1,14 +1,13 @@
 <?php
 
+use Core\App\App;
 use Core\Container\Container;
-use Core\QueryBuilder\QueryBuilder;
+use Core\Logger\Logger;
 
 $container = new Container();
 
-$container->bind('Core\QueryBuilder\QueryBuilder',  function (){
-    return QueryBuilder::qb('localhost', 'mini', 'root', '');
+$container->bind('Core\Logger\Logger', function(){
+    return new Logger();
 });
 
-$query_builder = $container->resolve('Core\QueryBuilder\QueryBuilder');
-
-dd($query_builder);
+App::setContainer($container);
