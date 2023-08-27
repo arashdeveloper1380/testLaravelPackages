@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use Rakit\Validation\Validator;
 use Auth\Auth;
 use Core\App\App;
+use Core\Logger\Logger;
 use Core\Redirect\Redirect;
 use Core\Response\Response;
 use Core\Support\Arr\Arr;
@@ -88,7 +89,7 @@ class UsersController extends Controller{
         // dd(arr()->sort($sort));
         // dd(Arr::sort($sort));
 
-        $logger = App::container()->resolve('Core\Logger\Logger');
+        $logger = App::resolve(Logger::class);
         $logger->log("this is container logger");
         $name = "login page ";
         return view('index',compact('name'));

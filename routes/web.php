@@ -2,12 +2,14 @@
 
 require 'vendor/autoload.php';
 require_once 'Config/database.php';
+
 use Tracy\Debugger;
 
 Debugger::enable();
 Debugger::$showBar = false;
 
 use App\Controllers\UsersController;
+use App\Livewire\LivewireController;
 use Auth\Auth;
 use Illuminate\Container\Container;
 use Illuminate\Events\Dispatcher;
@@ -28,6 +30,9 @@ $router->get('/reset', [UsersController::class, 'reset']);
 $router->post('/reset', [UsersController::class, 'resetStore']);
 $router->get('/logout', [Auth::class, 'logout']);
 $router->get('/dashboard', [UsersController::class, 'dashboard']);
+
+$router->get('/hello-world', [LivewireController::class, 'helloWorld']);
+
 
 
 // api

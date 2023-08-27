@@ -75,6 +75,7 @@ class ComposerStaticInit7298d334784aa372d3330c2cda26f09e
             'Psr\\Http\\Client\\' => 16,
             'Psr\\EventDispatcher\\' => 20,
             'Psr\\Container\\' => 14,
+            'Psr\\Clock\\' => 10,
         ),
         'M' => 
         array (
@@ -265,6 +266,10 @@ class ComposerStaticInit7298d334784aa372d3330c2cda26f09e
         'Psr\\Container\\' => 
         array (
             0 => __DIR__ . '/..' . '/psr/container/src',
+        ),
+        'Psr\\Clock\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/psr/clock/src',
         ),
         'Models\\' => 
         array (
